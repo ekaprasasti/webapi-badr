@@ -57,12 +57,14 @@ class AuthController extends Controller
 
 	public function logout(User $user)
 	{
-	
-		$user = $user->find(Auth::user()->id);
-	
-		return fractal()
-			->item($user)
-			->transformWith(new UserTransformer)
-			->toArray();
+		if (!Auth::logout()) {
+			return response()->json(['success' => false]);
+		}
+
+		return response()->json([
+			'success'	=> true,
+			'message'	=> 'you are successfully logged out',
+			'data'		=> null
+		]);
 	}
 }
