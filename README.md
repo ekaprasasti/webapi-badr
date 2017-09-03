@@ -116,13 +116,7 @@ Response failed:
 
 Response success:
 
-```bash
-{
-  "success": true,
-  "message": "you are successfully logged out",
-  "data": null
-}
-```
+*Mohon maaf karena saya belum berhasil membuat fitur logout, saya harus belajar bagaimana caranya melempar token authorization pada laravel*
 
 Response failed:
 

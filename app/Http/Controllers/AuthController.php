@@ -57,14 +57,18 @@ class AuthController extends Controller
 
 	public function logout(User $user)
 	{
-		if (!Auth::logout()) {
-			return response()->json(['success' => false]);
+
+		$user = Auth::guard('api')->user();
+
+		if ($user) {
+			$user->access_token = null;
+			$user->save();
 		}
 
 		return response()->json([
 			'success'	=> true,
 			'message'	=> 'you are successfully logged out',
 			'data'		=> null
-		]);
+		], 200);
 	}
 }
